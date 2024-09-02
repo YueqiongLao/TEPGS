@@ -3,6 +3,7 @@ library(ggplot2)
 library(VennDiagram)
 library(grid)
 library(futile.logger)
+
 ############################################GSE68086 Volcano map################
 
 DEGs <- read.delim2("./GSE68086.CRC.DEGs.txt",sep = "\t",header = T)
@@ -100,8 +101,8 @@ DEG.CRC <- DEG.CRC[with(DEG.CRC,abs(log2FoldChange) > 0.5 & padj < 0.05),]
 DEG.CRC.up <- DEG.CRC[DEG.CRC$log2FoldChange>0,]
 DEG.CRC.down <- DEG.CRC[DEG.CRC$log2FoldChange<0,]
 
-two.up <- DEG.CRC.up[rownames(DEG.CRC.up) %in% up$HGNC.symbol,] ###158
-two.down <- DEG.CRC.down[rownames(DEG.CRC.down) %in% down$HGNC.symbol,]###212
+two.up <- DEG.CRC.up[rownames(DEG.CRC.up) %in% up$HGNC.symbol,] 
+two.down <- DEG.CRC.down[rownames(DEG.CRC.down) %in% down$HGNC.symbol,]
 
 #######################venn
 venn <- function(..., 
